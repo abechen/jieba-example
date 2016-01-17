@@ -1,14 +1,18 @@
-#encoding=utf-8
+# encoding=utf-8
 import jieba
 import sys
 
 
 def start():
     sentence = raw_input('請輸入句子：')
-    use_dict = True #是否使用繁體詞庫
+    use_dict = True        # 是否使用繁體詞庫
+    use_user_dict = False  # 是否使用使用者自定義詞庫
 
     if use_dict:
         jieba.set_dictionary('dict/dict.txt.big')
+
+    if use_user_dict:
+        jieba.load_userdict('dict/user_dict.txt')
 
     getFullMode(sentence)
     getFullModeHMM(sentence)
